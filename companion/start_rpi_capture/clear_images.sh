@@ -12,11 +12,11 @@ then
 fi
 
 echo "pictures before:"
-find $IMAGE_DIR -name "*Z.jpg" | wc -l
+find $IMAGE_DIR -name "*Z.jpg?" | wc -l
 
 echo "clearing pics from $IMAGE_DIR .."
-find $IMAGE_DIR -name "*Z.jpg" -delete
+find $IMAGE_DIR -name "*Z.jpg?" -delete
 
 echo "pictures after:"
-find $IMAGE_DIR -name "*Z.jpg" | wc -l
+find $IMAGE_DIR -name "*Z.jpg?" | wc -l
 
