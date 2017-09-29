@@ -3,6 +3,9 @@
 set -e
 set -x
 
+# wait 30 seconds to allow APWeb to set system time from the GPS
+sleep 30
+
 QUALITY=100
 
 # create directory for images
