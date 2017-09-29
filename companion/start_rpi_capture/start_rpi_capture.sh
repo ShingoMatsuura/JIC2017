@@ -24,5 +24,9 @@ then
 fi
 
 ## TODO: check param, ISO:400
-raspistill -n -r -ISO 400 -q $QUALITY -v -dt -t 3600000 -tl 0 -o ${IMAGE_DIR}/%dZ.jpg
+while [ 1 ]; do
+    raspistill -n -r -ISO 400 -q $QUALITY -v -dt -t 3600000 -tl 3500 -o ${IMAGE_DIR}/%dZ.jpg
+    echo "*************** raspistill exited, restarting ******************"
+    sleep 1
+done
 
