@@ -9,8 +9,8 @@ sleep 30
 QUALITY=100
 
 # create directory for images
-#BASE_DIR=/media/usb0/
-BASE_DIR=~/images
+BASE_DIR=/media/usb0/images
+#BASE_DIR=~/images
 DATETIME_DIR=$(date +"%Y%m%d_%H-%M-%S")
 IMAGE_DIR=${BASE_DIR}/${DATETIME_DIR}
 
