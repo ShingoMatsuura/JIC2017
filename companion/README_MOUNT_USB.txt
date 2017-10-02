@@ -17,13 +17,35 @@ Command (m for help):n
 Select (default p):p
 
 #3-3. select partition, enter 1
-Partition number (1 -4, default):1
+Partition number (1-4, default):
 
-#3-4. write partition, enter w
+#3-4. set first sector, enter default value
+First sector (2048-60062467, default 2048):2048
+
+#3-5. set last sector, enter default value
+Last sector, +sectors or +size{K,M,G,T,P} (2048-60062467, default 60062467):60062467
+
+## this message will be shown
+## Created a new partition 1 of type 'Linux' and of size 28.7 GiB.
+
+#3-6. write partition, enter w
 Command (m for help):w
+
+## The partition table has been altered.
+## Calling ioctl() to re-read partition table.
+## Re-reading the partition table failed.: Invalid argument
+
+#3-7. reboot
+sudo reboot
 
 #4. format the partition as ext4
 sudo mkfs.ext4 /dev/sda1
+
+#4-1. confirmation message will be shown, enter y
+
+## mke2fs 1.42.12 (29-Aug-2014)
+## /dev/sda1 contains a vfat file system
+## Proceed anyway? (y,n)
 
 #5. create mount directory
 sudo mkdir /media/usb0
@@ -32,7 +54,7 @@ sudo mkdir /media/usb0
 sudo mount /dev/sda1 /media/usb0
 
 #7. setting for auto mount, check UUID
-sudo fdisk /dev/sda1
+sudo blkid /dev/sda1
 
 ## ex)
 ##/dev/sda1: UUID="dc69fc31-4a50-44e2-a3f7-f5648fea6f8d" TYPE="ext4" PARTUUID="386954cf-01
@@ -55,7 +77,7 @@ sudo nano fstab
 sudo reboot
 
 #13. check mounted USB memory
-fd
+df
 
 ## ex). you can find like below
 ## /dev/sda1       30280032      16  30280016   1% /media/usb0
