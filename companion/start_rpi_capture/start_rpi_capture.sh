@@ -3,6 +3,9 @@
 set -e
 set -x
 
+# set timezone to GMT
+export TZ=GMT
+
 # wait 30 seconds to allow APWeb to set system time from the GPS
 sleep 30
 
