@@ -1,0 +1,27 @@
+save
+-------------
+
+#1. check if (input file) 
+sudo dd bs=4M if=/dev/sdb | gzip > apsync_jic2017.img.gz
+
+#2. open other terminal
+
+#3. show progress on #1 terminal
+while true; do sudo killall -U. ch1 dd; sleep 2; done
+
+
+
+restore
+--------------
+#1. check of (out file)
+gunzip --stdout apsync_jic2017.img.gz | sudo dd bs=4M of=/dev/sdb
+
+#2. open other terminal
+
+#3. show progress on #1 terminal
+while true; do sudo killall -U. ch1 dd; sleep 2; done
+
+
+
+
+

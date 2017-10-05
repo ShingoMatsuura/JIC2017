@@ -1,0 +1,44 @@
+#0. install git-gui gitk
+sudo apt-get install git-gui gitk
+
+
+#1. clone cuav
+git clone https://github.com/CanberraUAV/cuav.git
+
+
+#2. change to cuav directory which was cloned by #1
+cd cuav
+
+
+#3. add remote repo of peter
+git remote add peterbarker https://github.com/peterbarker/cuav.git
+
+
+#4. confirm added remote
+git remote
+
+ origin
+ peterbarker
+
+
+#5. fetch remote peterbarker repo
+git fetch peterbarker
+
+
+#6. open peter's branch by gitk 
+gitk peterbarker/random-stuff
+
+
+#7. select commit by right click and select 'Cherry-pick this commits' menu
+
+
+#8. close gitk
+
+
+#9. commit cherry-picked commits
+git commit --allow-empty
+
+
+#10. build & install cuav
+sudo python setup.py install
+
