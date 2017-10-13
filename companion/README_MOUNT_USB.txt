@@ -69,7 +69,7 @@ sudo cp fstab fstab.org
 sudo nano fstab
 
 ## ex). add with UUID you checked step #7
-##UUID="dc69fc31-4a50-44e2-a3f7-f5648fea6f8d" /media/usb0     ext4    defaults  0       2
+##UUID="dc69fc31-4a50-44e2-a3f7-f5648fea6f8d" /media/usb0     ext4    nofail  0       2
 
 #11. Save modified fstab
 
