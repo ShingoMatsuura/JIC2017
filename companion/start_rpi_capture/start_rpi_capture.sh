@@ -6,33 +6,28 @@ set -x
 # set timezone to GMT
 export TZ=GMT
 
-# wait 30 seconds to allow APWeb to set system time from the GPS
+# sleep 30 seconds to allow system time to be set
 sleep 30
 
 QUALITY=100
+ISO=100
 
 # create directory for images
-BASE_DIR=/media/usb0/images
-#BASE_DIR=~/images
+BASE_DIR=/var/images
 DATETIME_DIR=$(date +"%Y%m%d_%H-%M-%S")
-IMAGE_DIR=${BASE_DIR}/${DATETIME_DIR}
+IMAGE_DIR=${BASE_DIR}
+DATETIME_YEAR=$(date +"%Y")
 
 # create base directory
-if [ ! -d ${BASE_DIR} ]
-then
-    mkdir ${BASE_DIR}
-fi
+mkdir -p ${BASE_DIR}
 
 # create image directory
-if [ ! -d ${IMAGE_DIR} ]
-then
-    mkdir ${IMAGE_DIR}
-fi
+mkdir -p ${IMAGE_DIR}
 
-## TODO: check param, ISO:400
+# take pictures using raspistill timelapse
 while [ 1 ]; do
-    raspistill -n -r -ISO 400 -q $QUALITY -v -dt -t 3600000 -tl 3500 -o ${IMAGE_DIR}/%dZ.jpg
-    echo "*************** raspistill exited, restarting ******************"
+    raspistill -n -r -ISO $ISO -q $QUALITY -v -dt -t 3600000 -tl 3000 -o ${IMAGE_DIR}/${DATETIME_YEAR}%d00Z.jpg > raspistill.log 2>&1 || /bin/true
+    echo " *************** raspistill exited, restarting ***************"
     sleep 1
 done
 
