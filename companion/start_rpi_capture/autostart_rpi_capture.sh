@@ -9,7 +9,10 @@ pushd ~apsync/start_rpi_capture
 # directory for images
 SOURCE_DIR=/var/images
 DATETIME_DIR=$(date +"%Y%m%d_%H-%M-%S")
-DEST_DIR=/media/usb0/${DATETIME_DIR}
+DEST_DIR=/media/usb0/images/${DATETIME_DIR}
+
+# create DEST_DIR
+mkdir -p ${DEST_DIR}
 
 # start rpi capture
 screen -L -d -m -S rpi_capture -s /bin/bash ./start_rpi_capture.sh >start_rpi_capture.log 2>&1
