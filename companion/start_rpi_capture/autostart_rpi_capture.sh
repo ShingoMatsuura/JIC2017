@@ -4,6 +4,12 @@
 set -e
 set -x
 
+# set timezone to GMT
+export TZ=GMT
+
+# sleep 30 seconds to allow system time to be set
+sleep 30
+
 pushd ~apsync/start_rpi_capture
 
 # directory for images
